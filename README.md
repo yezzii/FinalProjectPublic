@@ -7,7 +7,9 @@
 <table>
   <tbody>
     <tr>
-      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/b3d33b0e-c6e0-4773-a478-5fa9bcceed6a" width="100px;" alt=""/><br /><sub><b>팀장 : 고강찬</b></sub><br /></th>
+      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/3e759273-a1ce-401f-bb0c-e34619e3ebbf"width="100px;" 
+       alt=""/>
+        <br /><sub><b>팀장 : 고강찬</b></sub><br /></th>
       <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/b66b3b3c-280e-4ccd-9081-ea1486be7943" width="100px;" alt=""/><br /><sub><b>팀원 : 권예지</b></sub><br /></th>
       <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/d8bdace6-fc4b-47c1-8285-9afdb3897b52" width="100px;" alt=""/><br /><sub><b>팀원 : 김서윤</b></sub><br /></th>
       <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/36052549-4ddd-4ef2-b7ee-eb23ce9b838f" width="100px;" alt=""/><br /><sub><b>팀원 : 최정민</b></sub><br /></th>
