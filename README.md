@@ -70,8 +70,6 @@
   <img src="https://img.shields.io/badge/Spring%20Tool%20Suite%203-6DB33F?style=for-the-badge&logo=sts&logoColor=white">
 </div>
 
-*반응형으로 전환하기 전에는 해상도에 관한 이야기도 넣으면 좋을 듯...*
-
 ### 🔵 Coworker-tools
 <div>
   <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
@@ -193,39 +191,50 @@
 <br><br><br>
 
 ## 💻 화면 구성
-### ▪️ MainPage
+
+<h3>▪️ MainPage</h3>
+<div>
 <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/578860ca-8286-4bfc-a89a-701a067b9501">
 <br><br><br>
-### ▪️ Disposition
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/97208f1e-7ea7-46c4-a14b-7b5f3e6d7173">
-<br>
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/304e7ace-5903-47d7-8994-aadb4e9707a2">
-<br>
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/0713746b-797f-48ff-b0ef-db53bc0fa95a">
+</div>
+<h3>▪️ Disposition</h3>
+<div>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/97208f1e-7ea7-46c4-a14b-7b5f3e6d7173">
+  <br>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/304e7ace-5903-47d7-8994-aadb4e9707a2">
+  <br>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/0713746b-797f-48ff-b0ef-db53bc0fa95a">
 <br><br><br>
-### ▪️ Play_List!
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/77bb9337-6587-46a3-b87a-968affae0636">
-<br><br><br>
-### ▪️ Play_Content!
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/107d1829-2c26-4478-b7e8-e06974a2bd61">
-<br><br><br>
-### ▪️ Random
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/9f9a6ec3-a237-4d7e-9fd9-6ca8c236a84b">
-<br>
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/8139293d-88d4-4145-8880-0e2f5b25b983">
-<br><br><br>
-### ▪️ Community
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/5352e910-f9b8-44ac-bee6-b8b2bedd41fe">
-<br><br><br>
-### ▪️ Q&A
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/9cf93a72-696e-44bb-89e6-3d96dd1e5868">
-<br><br><br>
-### ▪️ MyPage
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/a0fb5e82-7ff4-4537-8a4e-da07f595c1fd">
-<br><br><br>
-### ▪️ Login
-<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/014b676c-c186-44d7-b9d9-b9668093d9ab">
-<br><br><br>
+</div>
+<h3>▪️ Play_List!</h3>
+<div>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/77bb9337-6587-46a3-b87a-968affae0636">
+  <br><br><br>
+</div>
+<h3>▪️ Play_Content!</h3>
+<div>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/107d1829-2c26-4478-b7e8-e06974a2bd61">
+</div>
+  <br><br><br>
+<h3>▪️ Random</h3>
+<div>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/9f9a6ec3-a237-4d7e-9fd9-6ca8c236a84b">
+  <br>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/8139293d-88d4-4145-8880-0e2f5b25b983">
+  <br><br><br>
+</div>
+<h3>▪️ Community</h3>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/5352e910-f9b8-44ac-bee6-b8b2bedd41fe">
+  <br><br><br>
+<h3>▪️ Q&A</h3>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/9cf93a72-696e-44bb-89e6-3d96dd1e5868">
+  <br><br><br>
+<h3>▪️ MyPage</h3>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/a0fb5e82-7ff4-4537-8a4e-da07f595c1fd">
+  <br><br><br>
+<h3>▪️ Login</h3>
+  <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/014b676c-c186-44d7-b9d9-b9668093d9ab">
+  <br><br><br>
 
 ## ✏️ 요구사항 정의서
 <img width="850" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/f0f7f8aa-7d4a-471a-8e70-d5896b84cfc2">
