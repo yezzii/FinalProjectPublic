@@ -200,9 +200,9 @@
 <h3>▪️ Disposition</h3>
 <div>
   <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/97208f1e-7ea7-46c4-a14b-7b5f3e6d7173">
-  <br>
+  <br><br>
   <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/304e7ace-5903-47d7-8994-aadb4e9707a2">
-  <br>
+  <br><br>
   <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/0713746b-797f-48ff-b0ef-db53bc0fa95a">
 <br><br><br>
 </div>
@@ -219,7 +219,7 @@
 <h3>▪️ Random</h3>
 <div>
   <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/9f9a6ec3-a237-4d7e-9fd9-6ca8c236a84b">
-  <br>
+  <br><br>
   <img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/8139293d-88d4-4145-8880-0e2f5b25b983">
   <br><br><br>
 </div>
