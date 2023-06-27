@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dispositionResultDao">
+
+	<delete id="DisposotionResult_delete" parameterType="String">
+		delete from
+		disposition_result where result_member_id = #{id}
+	</delete>
+
+	<insert id="DisposotionResult_insert"
+		parameterType="dispositionResultDto">
+		<selectKey resultType="int"
+			keyProperty="disposition_result_index" order="BEFORE">
+			select
+			max(disposition_result_index) from disposition_result
+		</selectKey>
+		insert into disposition_result values(#{disposition_result_index}+1
+		,#{result_member_id}, default, default, default, null)
+	</insert>
+
+	<select id="Disposition_select" parameterType="int"
+		resultType="dispositionDto">
+		select * from disposition where disposition_num = #{no}
+	</select>
+
+	<update id="Point_DispositionStart" parameterType="String">
+		update
+		member
+		set point = point - 5 where id = #{id}
+	</update>
+
+	<update id="Point_DispositionReset" parameterType="String">
+		update
+		member
+		set point = point + 5 where id = #{id}
+	</update>
+
+
+	<!-- A타입 질문 -->
+	<!-- 2점 추가 -->
+	<update id="DisposotionResult_updateA_1" parameterType="String">
+		update
+		disposition_result set A_score = A_score + 2 where result_member_id =
+		#{id}
+	</update>
+
+	<!-- 1점 추가 -->
+	<update id="DisposotionResult_updateA_2" parameterType="String">
+		update
+		disposition_result set A_score = A_score + 1 where result_member_id =
+		#{id}
+	</update>
+
+	<!-- 0점 추가 -->
+	<update id="DisposotionResult_updateA_3" parameterType="String">
+		update
+		disposition_result set A_score = A_score + 0 where result_member_id =
+		#{id}
+	</update>
+
+
+	<!-- B타입 질문 -->
+	<!-- 2점 추가 -->
+	<update id="DisposotionResult_updateB_1" parameterType="String">
+		update
+		disposition_result set B_score = B_score + 2 where result_member_id =
+		#{id}
+	</update>
+
+	<!-- 1점 추가 -->
+	<update id="DisposotionResult_updateB_2" parameterType="String">
+		update
+		disposition_result set B_score = B_score + 1 where result_member_id =
+		#{id}
+	</update>
+
+	<!-- 0점 추가 -->
+	<update id="DisposotionResult_updateB_3" parameterType="String">
+		update
+		disposition_result set B_score = B_score + 0 where result_member_id =
+		#{id}
+	</update>
+
+
+	<!-- C타입 질문 -->
+	<!-- 2점 추가 -->
+	<update id="DisposotionResult_updateC_1" parameterType="String">
+		update
+		disposition_result set C_score = C_score + 2 where result_member_id =
+		#{id}
+	</update>
+
+	<!-- 1점 추가 -->
+	<update id="DisposotionResult_updateC_2" parameterType="String">
+		update
+		disposition_result set C_score = C_score + 1 where result_member_id =
+		#{id}
+	</update>
+
+	<!-- 0점 추가 -->
+	<update id="DisposotionResult_updateC_3" parameterType="String">
+		update
+		disposition_result set C_score = C_score + 0 where result_member_id =
+		#{id}
+	</update>
+
+	<!-- A타입 결과 분자열 반환 -->
+	<update id="DispositionResultAscore_update"
+		parameterType="String">
+		update disposition_result set ABCscore_sum = case
+		WHEN
+		A_score BETWEEN 0 AND 5 THEN 'F'
+		WHEN A_score BETWEEN 6 AND 10 THEN 'T'
+		END
+		where ABCscore_sum is null
+		and
+		result_member_id = #{id}
+	</update>
+
+	<!-- B타입 결과 분자열 반환 -->
+	<update id="DispositionResultBscore_update"
+		parameterType="String">
+		update disposition_result set ABCscore_sum =
+		CONCAT(ABCscore_sum,
+		case
+		WHEN B_score BETWEEN 0 AND 5 THEN 'F'
+		WHEN
+		B_score BETWEEN 6 AND 10 THEN 'T'
+		END
+		)
+		where result_member_id = #{id}
+	</update>
+
+	<!-- C타입 결과 분자열 반환 -->
+	<update id="DispositionResultCscore_update"
+		parameterType="String">
+		update disposition_result set ABCscore_sum =
+		CONCAT(ABCscore_sum,
+		case
+		WHEN C_score BETWEEN 0 AND 5 THEN 'F'
+		WHEN
+		C_score BETWEEN 6 AND 10 THEN 'T'
+		END
+		)
+		where result_member_id = #{id}
+	</update>
+
+
+	<select id="DispositionResultABCscore_select"
+		parameterType="String" resultType="String">
+		SELECT ABCscore_sum
+		FROM
+		disposition_result
+		WHERE result_member_id = #{id}
+	</select>
+
+	<select id="selectPlay_text" parameterType="String"
+		resultType="play_codeDto">
+		SELECT DISTINCT play_text
+		FROM play_code
+		WHERE play_result =
+		#{ABCscore_sum}
+	</select>
+
+
+	<!-- play_information 테이블에서 문자열 값에 따른 랜덤값 5개 출력 -->
+	<select id="PlayInformationRandom_list" parameterType="String"
+		resultType="play_infoDto">
+		SELECT *
+		FROM play_information
+		WHERE play_result LIKE
+		CONCAT('%', #{play_result}, '%')
+		ORDER BY RAND()
+		LIMIT 5;
+	</select>
+
+
+	<!-- dispostionResult.jsp 에서 버튼 누르면 1점 추가 -->
+	<update id="PlayInformation_choice" parameterType="String">
+		update
+		play_information set play_choice = play_choice + 1 where play_name =
+		#{name}
+	</update>
+
+	<!-- play_information 테이블에서 play_choice 값 기준으로 내림차순 10개 조회 -->
+	<select id="Play_choice_DESC_List" parameterType="String"
+		resultType="play_infoDto">
+		SELECT *
+		FROM play_information
+		WHERE play_result LIKE
+		CONCAT('%', #{play_result}, '%')
+		ORDER BY play_choice DESC
+		LIMIT 10;
+	</select>
+
+	<select id="Play_choiceSUM" parameterType="String"
+		resultType="int">
+		SELECT SUM(play_choice)
+		FROM play_information
+		WHERE play_result LIKE CONCAT('%', #{play_result}, '%')
+	</select>
+
+
+</mapper>

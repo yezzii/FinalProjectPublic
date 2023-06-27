@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="managerDao">
+	<select id="manager_checkId" parameterType="String" resultType="int">
+		select count(*) from manager where manager_id = #{value}
+	</select>
+	
+	<select id="manager_checkPwd" parameterType="managerDto" resultType="int">
+		select count(*) from manager where manager_id = #{manager_id} and manager_password = #{manager_password}
+	</select>
+	
+	<select id = "manager_content" parameterType="String" resultType="managerDto">
+		select * from manager where manager_id = #{value}
+	</select>
+	
+<select id="manager_code" parameterType="String" resultType="managerCodeDto">
+    select * from manager_code where manager_code = #{value}
+</select>
+
+<select id="manager_code_list" resultType="managerCodeDto">
+	select * from manager_code
+</select>
+
+<select id="manager_list" parameterType="String" resultType="managerDto">
+    select * from manager where manager_code = #{value}
+</select>
+
+	
+	<select id="manager_action_list" parameterType="String" resultType="managerActionDto">
+		select * from manager_action where manager_id = #{id}
+	</select>
+	
+	<insert id="manager_action_insert" parameterType="map">
+      <selectKey resultType="int" keyProperty="manager_action_index" order="BEFORE">
+         select ifnull(max(manager_action_index), 0) from manager_action
+      </selectKey>
+         insert into manager_action 
+         values(#{manager_action_index} + 1, #{manager_id}, #{manager_action_content}, now())
+   </insert>
+   
+   <insert id="manager_reported_user" parameterType="map">
+      <selectKey resultType="int" keyProperty="report_user_index" order="BEFORE">
+         select ifnull(max(report_user_index), 0) from reported_user
+      </selectKey>
+         insert into reported_user 
+         values(#{report_user_index} + 1, #{member_id}, #{qna_num}, #{qna_reportedUser}, default)
+   </insert>
+   
+   <select id="reported_user_count" resultType="int">
+   		select count(*) from reported_user where completion_report = 0
+   </select>
+   
+   <select id="reported_user_list" parameterType="PageDto" resultType="reportedUserDto">
+   		<![CDATA[select a.*, q.qna_title as qna_title from (select r.*, row_number() over(order by r.report_user_index desc) rnum from reported_user r where completion_report = 0) a join qna_board q on a.qna_num = q.qna_num where a.rnum >= #{startNo} and a.rnum <= #{endNo}]]>
+   </select>
+	
+	<select id="member_info" parameterType="String" resultType="memberDto">
+		select * from member where nick_name = #{value}
+	</select>
+	
+	<update id="user_report_update" parameterType="String">
+		update member set member_login = 1 where id = #{value}
+	</update>
+	
+	<update id="user_reset_update" parameterType="String">
+		update member set member_login = 0 where id = #{value}
+	</update>
+	
+	<update id="manager_report_update" parameterType="map">
+		update reported_user set completion_report = #{state} where reported_user = #{nickName}
+	</update>
+	
+	<select id="completion_user_count" resultType="int">
+   		select count(*) from reported_user where completion_report in (1, 2)
+   </select>
+   
+   <select id="completion_user_list" parameterType="PageDto" resultType="reportedUserDto">
+   		<![CDATA[select a.*, q.qna_title as qna_title from (select r.*, row_number() over(order by r.report_user_index desc) rnum from reported_user r where completion_report in (1, 2)) a join qna_board q on a.qna_num = q.qna_num where a.rnum >= #{startNo} and a.rnum <= #{endNo}]]>
+   </select>
+   
+   <select id="manager_look_user_info_view" parameterType="String" resultType="managerLookUserInfoViewDto">
+   		select * from manager_look_user_info_view where user_id = #{value}
+   </select>
+</mapper>

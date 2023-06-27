@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+.cont-img {
+	margin-top: 100px;
+	display: inline-block;
+	width: 400px;
+	height: 300px;
+}
+
+.all-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: -100px;
+	margin-left: -50px;
+}
+
+.left-wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.left-cont {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: -60px;
+	margin-left: +20px;
+}
+
+.cont-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.right-cont {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	background-color: none;
+	width: 500px;
+	height: 500px;
+	margin-top: +8px;
+	margin-left: -400px !important;
+}
+
+.cont-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.sum-img {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+}
+
+.contit {
+	/*  word-break: break-all; */
+	
+}
+
+.contit a {
+	color: #c765c1;
+	display: inline-block;
+	width: 350px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	display: inline-block;
+}
+
+.concon {
+	width: 350px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+}
+
+.cont-title {
+	margin-left: 100px;
+}
+
+.cont-cont {
+	margin-left: 100px;
+}
+
+#myform fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl; /* 이모지 순서 반전 */
+    border: 0; /* 필드셋 테두리 제거 */
+    margin-top:15px;
+    margin-right: 200px;
+}
+
+#myform fieldset legend{
+    text-align: left;
+}
+#myform input[type=radio]{
+    display: none; /* 라디오박스 감춤 */
+}
+#myform label{
+   margin-top:5px;
+    font-size: 1em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 white; /* 새 이모지 색상 부여 */
+}
+#myform label:hover{
+    text-shadow: 0 0 0 #ffe100; /* 마우스 호버 */
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 #ffe100; /* 마우스 호버 뒤에오는 이모지들 */
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 #ffe100; /* 마우스 클릭 체크 */
+}
+#myform fieldset {
+	display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+	direction: rtl; /* 이모지 순서 반전 */
+	border: 0; /* 필드셋 테두리 제거 */
+	margin-top: 15px;
+	margin-right: 200px;
+}
+
+#myform fieldset legend {
+	text-align: left;
+}
+
+#myform input[type=radio] {
+	display: none; /* 라디오박스 감춤 */
+}
+
+#myform label {
+	margin-top: 5px;
+	font-size: 1em; /* 이모지 크기 */
+	color: transparent; /* 기존 이모지 컬러 제거 */
+	text-shadow: 0 0 0 white; /* 새 이모지 색상 부여 */
+}
+
+#myform label:hover {
+	text-shadow: 0 0 0 #ffe100; /* 마우스 호버 */
+}
+
+#myform label:hover ~ label {
+	text-shadow: 0 0 0 #ffe100; /* 마우스 호버 뒤에오는 이모지들 */
+}
+
+#myform input[type=radio]:checked ~ label {
+	text-shadow: 0 0 0 #ffe100; /* 마우스 클릭 체크 */
+}
+
+#reviewContents {
+	width: 80%;
+	margin-top: 10px;
+	border:1.5px solid #7b7b7b;;
+	background-color: #f2f0ec;
+	height: 30px;
+	margin-left: 10px;
+}
+.textForm {
+	padding: 10px 10px;
+}
+
+.starcount {
+	display: inline-block;
+}
+
+.star-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.star-item {
+	display: inline-block;
+	font-size: 1em;
+}
+
+.star.active {
+	color: #ffe100;
+}
+
+.nickname{
+	display: inline-block;
+}
+
+#reply_modify {
+	display: none;
+}
+
+.replyModify {
+	color: #879fcc;
+	font-weight: bold;
+  	float: right;
+  	font-size: 16px;
+  	padding-right: 15px;
+}
+
+.replyDelete {
+	color: #879fcc;
+	font-weight: bold;
+	float: right;
+	font-size: 16px;
+}
+
+.replyButtons {
+	display: inline-block;
+}
+
+.play_button{
+	background-color :#f0cac9;
+	padding:7px 20px;
+	border-style: none;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.play_button:hover {
+	background-color: #fff;
+	transition: background-color 0.7s ease;
+}
+.date{
+	color: #80808e;
+}
+
+.star_white{
+	color: transparent;
+	text-shadow: 0 0 0 white;
+}
+
+.reviewContents{
+	width: 88%;
+	margin-top: 10px;
+	border:1.5px solid #7b7b7b;;
+	background-color: #f2f0ec;
+	height: 30px;
+}
+
+.modify_button{
+	background-color :#f0cac9;
+	padding:7px 20px;
+	border-style: none;
+	font-family: 'Noto Sans KR', sans-serif;
+	margin-left: 8px;
+}
+
+.modify_button:hover {
+	background-color: #fff;
+	transition: background-color 0.7s ease;
+}

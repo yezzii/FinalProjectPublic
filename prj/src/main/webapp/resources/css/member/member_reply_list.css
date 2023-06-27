@@ -1,0 +1,701 @@
+@charset "UTF-8";@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	width: 1200px;
+	margin: auto;
+	padding: 140px 0;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a, button, input[type="button"], input[type="submit"], input[type="reset"]
+	{
+	cursor: pointer;
+}
+/* 전체 게시판 페이지 CSS */
+#main_container {
+	margin: auto;
+}
+
+.header1 {
+	margin: 20px;
+	font-size: 20px;
+}
+
+.header2 {
+	margin: 20px;
+	font-size: 13px;
+}
+
+.table {
+	width: 73%;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.table th, td {
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.table th {
+	padding: 15px 10px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.table tr {
+	border-bottom: 1px solid #BFBFBF;
+	height: 55px;
+}
+
+.table td {
+	padding: 15px 10px 14px;
+	white-space: nowrap;
+	font-size: 14px;
+}
+
+.community_title {
+	text-align: left;
+	width: 350px;
+}
+
+#community_title:hover {
+	font-weight: bold;
+}
+
+.best_tag {
+	background: #39403F;
+	padding: 2px 4px;
+	font-size: 10px;
+	width: 20px;
+	height: 10px;
+	color: white;
+	line-height: 10px;
+}
+
+.new_tag {
+	background: #FFF5CC;
+	padding: 2px 4px;
+	font-size: 10px;
+	width: 20px;
+	height: 10px;
+	color: black;
+	line-height: 10px;
+}
+
+#buttonContainer {
+	display: flex;
+	justify-content: end;
+	margin-bottom: 20px;
+}
+
+#writing_button {
+	width: 100px;
+	height: 40px;
+	padding: 5px;
+	color: black;
+	border: 1px solid #f2f2f2;
+	font-size: 14px;
+	background: white;
+}
+
+#writing_button:hover {
+	font-weight: bolder;
+	border: 2px solid #B3B3B3;
+}
+
+#writing_button_icon {
+	color: black;
+	margin-right: 5px;
+}
+
+.communityListWrap {
+	margin: 20px 0;
+	width: 75%; height : 600px;
+	position: relative;
+	height: 600px;
+}
+
+.bestListWrap {
+	margin-left: 20px;
+	width: 321px;
+	padding: 22px 21px 14px;
+	background-color: #f8f8f8;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.bestListWrap h1 {
+	font-size: 15px;
+	padding-bottom: 8px;
+	padding-left: 10px;
+}
+
+.rank {
+	font-size: 14px;
+	width: 90%;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 5px 3px;
+	box-sizing: border-box;
+}
+
+.upRank a {
+	color: red;
+	font-weight: bolder;
+}
+
+.rank em {
+	font-style: normal;
+	display: inline-block;
+	width: 20px;
+	margin-right: 10px;
+	font-weight: bold;
+	color: #94969b;
+	text-align: center;
+	line-height: 20px;
+	vertical-align: middle;
+}
+
+.rank a {
+	line-height: 17px;
+	vertical-align: middle;
+}
+
+.bestListInner:first-child {
+	color: red;
+}
+
+.ad {
+	position: absolute;
+	right: 0;
+	top: 460px;
+}
+
+.ad img {
+	width: 321px;
+	height: 150px;
+}
+/* 작성 페이지 CSS */
+#writingHeader {
+	display: flex;
+	justify-content: end;
+}
+
+#writingSubmit {
+	padding: 0 12px;
+	font-size: 13px;
+	margin-right: 10px;
+	border-style: none;
+	background: black;
+	color: white;
+	width: 100px;
+	height: 40px;
+}
+
+#writingContent table {
+	border-collapse: collapse;
+	text-align: center;
+	width: 100%;
+	margin-bottom: 10px;
+	border-top: 2px solid black;
+}
+
+#writingContent table th, td {
+	border-collapse: collapse;
+	text-align: center;
+}
+
+#writingContent table th {
+	padding: 15px 10px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	width: 300px;
+}
+
+#writingContent table tr {
+	border-bottom: 1px solid #BFBFBF;
+}
+
+#writingContent table td {
+	padding: 15px 10px 14px;
+	white-space: nowrap;
+	font-size: 14px;
+}
+
+.inputBox {
+	font-size: 15px;
+	width: 95%;
+	padding: 11px 12px 10px;
+	border-style: none;
+}
+
+#community_head, #community_writer, #writingDate {
+	padding: 11px 12px 10px;
+}
+
+#community_head {
+	border-style: none;
+	width: 97%;
+}
+
+#community_content {
+	margin-top: 12px;
+}
+
+#writingImage {
+	max-height: 200px;
+}
+
+.writingFile {
+	display: flex;
+	justify-content: flex-start;
+}
+
+#file_input_hidden {
+	display: none;
+}
+
+.file_label {
+	background: black;
+	color: white;
+	padding: 5px 7px;
+	font-size: 14px;
+	font-weight: normal;
+	cursor: pointer;
+	height: 22px;
+	margin-right: 10px;
+}
+
+#fileName {
+	width: 100%;
+	text-align: left;
+	line-height: 30px;
+	font-size: 17px;
+}
+
+.note-editable {
+	background: white;
+	text-align: left;
+}
+
+#preview {
+	margin-top: 15px;
+}
+/* 상세 페이지 CSS */
+#article_image {
+	max-height: 400px;
+}
+
+.like_img {
+	width: 20px;
+}
+
+.replyDepth_1 {
+	margin-left: 50px;
+}
+
+#article_container {
+	padding: 30px;
+	border: 1px solid black;
+	border-radius: 6px;
+}
+
+#articlelHeader {
+	border-bottom: 1px solid black;
+	padding-bottom: 20px;
+}
+
+#article_title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#article_head_tag {
+	background: #FFDAD6;
+	border-radius: 5px;
+	font-size: 23px;
+	color: red;
+	border-style: none;
+	height: 40px;
+	margin-right: 15px;
+	text-align: center;
+	padding: 3px 10px;
+	margin-top: 3px;
+}
+
+#article_title h3 {
+	font-size: 40px;
+}
+
+#article_info_wrap {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+#article_info1 {
+	font-size: 15px;
+	color: #757575;
+}
+
+#profile_info {
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#article_info2 {
+	font-size: 16px;
+	color: black;
+}
+
+.article_info2_text {
+	margin-left: 10px;
+}
+
+#articleContent {
+	padding: 20px;
+}
+
+#article_content {
+	padding-bottom: 20px;
+}
+
+#articleFooter {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 20px 10px;
+}
+
+.articlelikeCheck {
+	vertical-align: middle;
+}
+
+#replyContainer {
+	padding: 10px;
+}
+
+.replyWrite {
+	padding: 20px;
+	border: 1px solid black;
+	border-radius: 6px;
+	margin: 10px 0;
+	font-weight: 600;
+}
+
+.replyWriteWriter, .reply_writer_wrap {
+	display: flex;
+}
+
+.reply_writer {
+	background: none;
+	border-style: none;
+	font-size: 14px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	font-weight: bold;
+	width: fit-content;
+}
+
+.writer_tag {
+	border: 1px solid red;
+	border-radius: 12px;
+	font-size: 12px;
+	color: red;
+	width: 60px;
+	text-align: center;
+	height: 17px;
+	line-height: 17px;
+	background: rgba(255, 0, 0, 0.1);
+}
+
+.manager_tag {
+	border: 1px solid green;
+	border-radius: 12px;
+	font-size: 12px;
+	color: green;
+	width: 60px;
+	text-align: center;
+	height: 17px;
+	line-height: 17px;
+	background: rgba(0, 128, 0, 0.1);
+}
+
+.reply_content {
+	resize: none;
+	background: none;
+	border-style: none;
+}
+
+.reply_content:focus {
+	outline: none;
+}
+
+.replyWriteContent textarea {
+	width: -webkit-fill-available;
+}
+
+.replyWriteContent textarea::placeholder {
+	color: gray;
+}
+
+.replyWriteContent textarea:focus::placeholder {
+	color: white;
+}
+
+.replyWriteButton {
+	display: flex;
+	justify-content: end;
+}
+
+.replyWriteButton input, .reply_date_button input, .reply_date_button span
+	{
+	background: none;
+	border-style: none;
+	font-size: 14px;
+	color: gray;
+}
+
+.reply_date_button span, .reply_date_button input {
+	margin-right: 10px;
+}
+
+.replyWriteButton input:hover, .reply_date_button input:hover {
+	color: black;
+	font-weight: bolder;
+}
+
+.replyDepth_0, .replyDepth_1 {
+	padding: 10px;
+}
+
+.content_button {
+	width: 100px;
+	height: 30px;
+	background: black;
+	color: white;
+	border-style: none;
+	margin-left: 5px;
+}
+
+#article_btn {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.content_button:hover {
+	background: gray;
+}
+/* 페이징 처리 CSS */
+.pageContainer {
+	text-align: center;
+	font-size: 0;
+	padding: 20px 0;
+	border-bottom: 1px solid #B3B3B3;
+}
+
+.page_nation {
+	display: inline-block;
+}
+
+.page_nation .none {
+	display: none;
+}
+
+.page_nation a {
+	display: block;
+	margin: 0 3px;
+	float: left;
+	border: 1px solid #e6e6e6;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	background-color: #fff;
+	font-size: 13px;
+	color: #999999;
+	text-decoration: none;
+}
+
+.page_nation .arrow {
+	border: 1px solid #ccc;
+}
+
+.page_nation .pprev {
+	background: #f8f8f8 url('resources/images/page_pprev.png') no-repeat
+		center center;
+	margin-left: 0;
+}
+
+.page_nation .prev {
+	background: #f8f8f8 url('resources/images/page_prev.png') no-repeat
+		center center;
+	margin-right: 7px;
+}
+
+.page_nation .next {
+	background: #f8f8f8 url('resources/images/page_next.png') no-repeat
+		center center;
+	margin-left: 7px;
+}
+
+.page_nation .nnext {
+	background: #f8f8f8 url('resources/images/page_nnext.png') no-repeat
+		center center;
+	margin-right: 0;
+}
+
+.page_nation a.active {
+	background-color: #42454c;
+	color: #fff;
+	border: 1px solid #42454c;
+}
+/* 검색창 CSS */
+.searchContainer {
+	display: flex;
+	justify-content: center;
+	padding: 20px 0;
+}
+
+input:focus, select:focus {
+	outline: none;
+}
+
+.search {
+	border: 1px solid #ddd;
+	height: 40px;
+	margin: 0 2px;
+	padding-left: 10px;
+}
+
+.head, .field {
+	width: 140px;
+	border-radius: 0;
+}
+
+.keyword {
+	width: 300px;
+}
+
+.searchButton {
+	height: 42px;
+	width: 80px;
+	border-style: none;
+	background: black;
+	color: #fff;
+	font-weight: 400;
+	font-size: 14px;
+	cursor: pointer;
+}
+/* qna_pwdCheck */
+#pwdCheckContainer {
+	width: 460px;
+	text-align: left;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.pwdCheckHeader {
+	text-align: left;
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+.pwdCheckContent {
+	text-align: center;
+}
+
+.pwdCheckMent {
+	margin-bottom: 30px;
+	text-align: left;
+}
+
+.pwdCheckInput input {
+	width: 440px;
+	height: 40px;
+	border: 1px solid #999999;
+	border-radius: 4px;
+	padding: 0 10px;
+}
+
+.pwdCheckButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 20px 0;
+}
+
+.pwdCheckButton input {
+	width: 460px;
+	height: 40px;
+	margin: 5px 0;
+	background: black;
+	color: white;
+	border-style: none;
+}
+
+.pwdCheckButton input:hover {
+	background: #A39EF8;
+	font-weight: bolder;
+}
+
+#goBackHref:hover {
+	font-weight: bolder;
+}
+
+
+body {
+	writing-mode: horizontal-tb !important;
+}
+
+.reply-con :hover {
+	text-decoration: underline !important;
+}
+
+.reply-con {
+	padding-top: 0.75%;
+}
+
+.reply-con span {
+	float: left;
+}
+
+.reply-title-span {
+	font-size: 10px;
+}
+
+.reply-content-span, .reply-regdate-span {
+	font-size: 5px;
+	color: grey;
+}
+
+.comment-title {
+	display: flex;
+	justify-content: center;
+	padding-top: 0.75%;
+	padding-bottom: 0.75%;
+}
+.hr-line2{
+	margin-top:-20px; 
+} 
+.hr-line1 {
+	height: 1.5px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border: 0;
+}

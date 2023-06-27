@@ -1,0 +1,155 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="nick_name" value="${nick_name}" />
+<c:set var="list" value="${memberReplyList}" />
+<c:set var="dto" value="${dto}" />
+<c:set var="paging" value="${Paging }" />
+<c:set var="communityCount" value="${memberCommunityCount}" />
+<c:set var="playCount" value="${memberPlayLikeCount}" />
+<c:set var="memberReplyCount" value="${memberReplyCount}" />
+<c:set var="memberReplyContentCount" value="${memberReplyContentCount}" />
+<c:set var="memberLikeCount" value="${memberLikeCount}" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Page</title>
+<link rel="stylesheet" href="./resources/css/member/footer_member.css" />
+<link rel="stylesheet" href="./resources/css/member/member_myPage.css" />
+<link rel="stylesheet" href="./resources/css/member/member_reply_list.css" />
+
+<script src="https://kit.fontawesome.com/618ef9578a.js"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<%@include file="../include/header_myPage.jsp"%>
+
+	<div align="center" class="container">
+		<h3 align="center">My Page</h3>
+
+		<div class="my-page-all-con">
+			<div class="my-page-left-con">
+				<div>${dto.nick_name}
+					<div class="insert-wrap">
+						<div class="member-insert-date">가입</div>
+						<div class="member-insert-date">${dto.date}</div>
+					</div>
+
+				</div>
+
+				<div class="member-community-count-wrap">
+					<div>
+						<a href="<%=request.getContextPath()%>/member_community_list.do">내가
+							쓴 글 보기</a>
+					</div>
+					<div>
+						<a href="<%=request.getContextPath()%>/member_community_list.do">${communityCount}</a>개
+					</div>
+				</div>
+				<div class="member-reply-count">
+					<div>
+						<a href="<%=request.getContextPath()%>/member_reply_list.do">내가
+							쓴 댓글 보기</a>
+					</div>
+					<div>
+						<a href="<%=request.getContextPath()%>/member_reply_list.do">${memberReplyCount}</a>개
+					</div>
+				</div>
+				<div class="member-reply-count">
+					<div>
+						<a href="<%=request.getContextPath()%>/member_like_list.do">내가
+							추천한 글 보기</a>
+					</div>
+					<div>
+						<a href="<%=request.getContextPath()%>/member_like_list.do">${memberLikeCount}</a>개
+					</div>
+				</div>
+				<div class="member-play-list-wrap">
+					<div>
+						<a href="<%=request.getContextPath()%>/member_play_list.do">내
+							찜 내역 보기</a>
+					</div>
+					<div>
+						<a href="<%=request.getContextPath()%>/member_play_list.do">${playCount}</a>개
+					</div>
+				</div>
+				<div class="member_point_list">
+					<div>
+						<a href="<%=request.getContextPath()%>/member_point_list.do">내
+							포인트내역 보기 </a>
+					</div>
+					<div>
+						<a href="<%=request.getContextPath()%>/member_point_list.do">${dto.point}</a>포인트
+					</div>
+				</div>
+					<a href="<%=request.getContextPath()%>/member_befordModify.do">개인정보수정</a>
+			</div>
+
+
+			<div class="my-page-right-con">
+				<div class="my-page-sub-right-con">
+					<div class="my-page-right-wrap">
+						<div class="my-page-sub-right-wrap">
+							<div id="activityLog"></div>
+							<p>
+								<a href="<%=request.getContextPath()%>/member_community_list.do">작성글</a>
+							</p>
+							<p>
+								<a style="color: salmon;"
+									href="<%=request.getContextPath()%>/member_reply_list.do">작성
+									댓글 </a>
+							</p>
+							<p>
+								<a
+									href="<%=request.getContextPath()%>/member_reply_content_list.do">댓글단
+									글</a>
+							</p>
+							<p>
+								<a href="<%=request.getContextPath()%>/member_like_list.do">좋아요한
+									글</a>
+							</p>
+						</div>
+						<div class="my-content-con">
+							<div id="main_container">
+								<div class="communityListWrap">
+									<hr class="hr-line1">
+									<p class="comment-title">댓글</p>
+									<hr class="hr-line3">
+									<div class="header2">작성 댓글 수는 게시글에 작성한 댓글 수의 합이며, 이 목록에서는
+										게시글에 작성한 댓글만 제공합니다.</div>
+									<c:if test="${!empty list }">
+										<c:forEach items="${list }" var="dto">
+											<div class="reply-con">
+												<a class="reply-con-a"
+													href="<%=request.getContextPath() %>/community_content.do?no=${dto.reply_community_num}&page=${paging.page }">
+													<span class="reply-title-span">${dto.community_reply_title}</span><br>
+													<span class="reply-content-span">${dto.reply_content }</span><br>
+													<span class="reply-regdate-span">${dto.reply_regdate }</span><br>
+												</a><br>
+												<hr class="hr-line2">
+											</div>
+										</c:forEach>
+									</c:if>
+									<c:if test="${empty list }">
+										<tr>
+											<td colspan="7" align="center">
+												<h3>댓글 내역이 존재하지 않습니다.</h3>
+											</td>
+										</tr>
+									</c:if>
+								</div>
+							</div>
+						</div>
+						<div class="insert-btn-con">
+							<a href="<%=request.getContextPath()%>/member_delete.do">회원탈퇴</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+		<%@include file="../include/footer_my_page.jsp"%>
+</body>
+</html>

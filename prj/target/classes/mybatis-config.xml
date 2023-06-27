@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+
+		<!--Member -->
+		<typeAlias type="com.member.model.MemberDTO" alias="memberDto" />
+		<typeAlias type="com.member.model.MemberDAO" alias="memberDao" />
+		<typeAlias type="com.member.model.UserCommunityInfoViewDTO" alias="userCommunityInfoView" />
+		<typeAlias type="com.member.model.UserCommunityReplyInfoViewDTO" alias="userCommunityReplyInfoView" />
+
+		<!--Community -->
+		<typeAlias type="com.community.model.CommunityDAO" alias="communityDao" />
+		<typeAlias type="com.community.model.CommunityDTO" alias="communityDto" />
+		<typeAlias type="com.community.model.PageDTO" alias="PageDto" />
+		<typeAlias type="com.community.model.Community_likeDTO" alias="community_likeDto" />
+		<typeAlias type="com.community.model.Community_replyDTO" alias="community_replyDto" />
+			
+		<!--Play -->
+		<typeAlias type="com.play.model.Play_InfoDTO" alias="play_infoDto"/>
+		<typeAlias type="com.play.model.Play_InfoDAO" alias="play_infoDao"/>
+		<typeAlias type="com.play.model.Play_LikeDTO" alias="play_likeDto"/>
+		<typeAlias type="com.play.model.Play_LikeDAO" alias="play_likeDao"/>
+		<typeAlias type="com.play.model.Play_PageDTO" alias="play_pageDto"/>
+		<typeAlias type="com.play.model.Play_CommentDTO" alias="play_commentDto"/>
+		<typeAlias type="com.play.model.Play_CodeDTO" alias="play_codeDto"/>
+
+		<!-- Disposition -->
+		<typeAlias type="com.disposition.model.DispositionResultDAO" alias="dispositionResultDao"/>
+		<typeAlias type="com.disposition.model.DispositionResultDTO" alias="dispositionResultDto"/>
+		<typeAlias type="com.disposition.model.DispositionDTO" alias="dispositionDto"/>
+
+		<!-- 관리자 -->		
+		<typeAlias type="com.manager.model.ManagerDAO" alias="managerDao" />
+        <typeAlias type="com.manager.model.ManagerDTO" alias="managerDto" />
+        <typeAlias type="com.manager.model.ManagerActionDTO" alias="managerActionDto"/>
+        <typeAlias type="com.manager.model.ReportedUserDTO" alias="reportedUserDto"/>
+        <typeAlias type="com.manager.model.ManagerLookUserInfoViewDTO" alias="managerLookUserInfoViewDto"/>
+        <typeAlias type="com.manager.model.ManagerCodeDTO" alias="managerCodeDto"/>
+        
+        <!-- Qna -->
+        <typeAlias type="com.qna.model.FaqDAO" alias="FaqDao" />
+        <typeAlias type="com.qna.model.Faq_CategoryDTO" alias="Faq_CategoryDto" />
+        <typeAlias type="com.qna.model.FaqDTO" alias="FaqDto" />
+        <typeAlias type="com.qna.model.QnaDAO" alias="QnaDao" />
+        <typeAlias type="com.qna.model.QnaDTO" alias="QnaDto" />
+        <typeAlias type="com.qna.model.faqJoinDTO" alias="faqJoinDto" />
+        
+        <!-- Point -->
+        <typeAlias type="com.point.model.PointDAO" alias="pointDao"/>
+        <typeAlias type="com.point.model.PointDTO" alias="pointDto"/>
+        
+	</typeAliases>
+</configuration>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pointDao">
+	
+	<select id="point_count" parameterType="String" resultType="int">
+		select count(*) from point where member_id = #{value}
+	</select>
+	
+	<select id="point_list" parameterType="map" resultType="pointDto">
+		<![CDATA[select * from (select p.*, row_number() over(order by point_index desc) pnum from point p where member_id = #{id}) a where pnum >= #{pDto.startNo} and pnum <= #{pDto.endNo}]]>
+	</select>
+	
+	<insert id="point_insert" parameterType="map">
+      <selectKey resultType="int" keyProperty="point_index" order="BEFORE">
+         select ifnull(max(point_index), 0) from point
+      </selectKey>
+         insert into point 
+         values(#{point_index} + 1, #{member_id}, #{point_content}, #{point_sign}, #{point_score}, now(), #{point_remanet})
+   </insert>
+   
+</mapper>

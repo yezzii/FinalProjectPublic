@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+.container {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 500px;
+	left: 50%;
+
+	background-color: white;
+	width: 1000px;
+}
+
+.form-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 40px;
+}
+
+.left-right-id-con {
+	margin-top:50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.button-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-width {
+	width: 200px;
+}
+
+.input-width {
+	width: 265px;
+	height: 30px;
+}
+
+#checkId, #checkPwd, #checkName, #checkNick_name, #checkEmail,
+	#checkPhone, #mail-check-warn {
+	height: 25px;
+	width: 300px;
+	font-size: 5pt;
+}
+
+#guide {
+	font-size: 5pt;
+	height: 0px;
+	width: 300px;
+}
+
+#password {
+	margin-bottom: 20px;
+}
+
+.input-addr {
+	margin-bottom: 20px;
+}
+
+.mail-check-input {
+	margin-bottom: 20px;
+}
+h3{
+	margin-bottom:40px; 
+}
+.btn0{
+	background-color: transparent;
+	font-weight: bold;
+	color: #226456;
+	border: none;
+	cursor: pointer;
+}
+
+#nick_name_change{
+	background-color: transparent;
+	font-weight: bold;
+	color: #226456;
+	border: none;
+	cursor: pointer;
+}
+
+
+#email_change{
+	background-color: transparent;
+	font-weight: bold;
+	color: #226456;
+	border: none;
+	cursor: pointer;
+}
+
+#signup-btn{
+	padding: 10px 20px;
+	margin-left:50px;
+	background-color: #226456;
+	color: #fff;
+	border: 1px solid white;
+	cursor: pointer;
+	width: 100px;
+}
+
+.text_phone {
+	margin-top: 20px;
+}
+
+.id-left-con{
+	margin-left: 130px;
+}
+.id-right-con{
+	margin-top: 160px;
+	margin-left: 20px;
+}
+.footer {
+	margin-top: 1300px !important;
+}

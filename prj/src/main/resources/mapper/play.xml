@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="play_infoDao">
+
+	<!--전체 리스트 조회 -->
+	<select id="all" resultType="play_infoDto">
+		select * from play_information;
+	</select>
+
+	<select id="getPlaySearchList" resultType="play_infoDto"
+		parameterType="java.util.Map">
+		SELECT * FROM play_information
+		<if test="groups != null">
+			<if test="locations != null">
+				<if test="prices != null">
+					WHERE play_group IN
+					<foreach collection="groups" item="group" open="("
+						close=")" separator=",">
+						#{group}
+					</foreach>
+					And play_address IN
+					<foreach collection="locations" item="location" open="("
+						close=")" separator=",">
+						#{location}
+					</foreach>
+					<if test="prices != null">
+						AND play_price BETWEEN #{prices[0]} AND #{prices[1]}
+					</if>
+				</if>
+				<if test="prices == null">
+					WHERE play_group IN
+					<foreach collection="groups" item="group" open="("
+						close=")" separator=",">
+						#{group}
+					</foreach>
+					And play_address IN
+					<foreach collection="locations" item="location" open="("
+						close=")" separator=",">
+						#{location}
+					</foreach>
+				</if>
+			</if>
+			<if test="locations == null">
+				<if test="prices != null">
+					WHERE play_group IN
+					<foreach collection="groups" item="group" open="("
+						close=")" separator=",">
+						#{group}
+					</foreach>
+					AND play_price BETWEEN #{prices[0]} AND #{prices[1]}
+				</if>
+				<if test="prices == null">
+					WHERE play_group IN
+					<foreach collection="groups" item="group" open="("
+						close=")" separator=",">
+						#{group}
+					</foreach>
+				</if>
+			</if>
+		</if>
+		<if test="groups == null">
+			<if test="locations != null">
+				<if test="prices != null">
+					WHERE play_address IN
+					<foreach collection="locations" item="location" open="("
+						close=")" separator=",">
+						#{location}
+					</foreach>
+					<if test="prices != null">
+						AND play_price BETWEEN #{prices[0]} AND #{prices[1]}
+					</if>
+				</if>
+				<if test="prices == null">
+					WHERE play_address IN
+					<foreach collection="locations" item="location" open="("
+						close=")" separator=",">
+						#{location}
+					</foreach>
+				</if>
+			</if>
+			<if test="locations == null">
+				<if test="prices != null">
+					WHERE play_price BETWEEN #{prices[0]} AND #{prices[1]}
+				</if>
+				<if test="prices == null">
+					-- No additional condition
+				</if>
+			</if>
+		</if>
+	</select>
+
+
+
+
+	<select id="PlayList_loc" parameterType="list"
+		resultType="play_infoDto">
+		SELECT *
+		FROM play_information
+		<where>
+			<if test="list != null and !list.isEmpty()">
+				<if
+					test="list.contains('강북구') or list.contains('강서구') or list.contains('강남구') or list.contains('강동구')">
+					play_address IN
+					<foreach item="item" collection="list" open="("
+						separator="," close=")">
+						#{item}
+					</foreach>
+					<if
+						test="list.contains('운동') or list.contains('요리') or list.contains('전시회') or list.contains('뮤지컬') or list.contains('여행') or list.contains('홈트') or list.contains('OTT') or list.contains('게임')">
+						AND play_group IN
+						<foreach item="item" collection="list" open="("
+							separator="," close=")">
+							#{item}
+						</foreach>
+					</if>
+					<if test="list.contains('유료') or list.contains('무료')">
+						AND play_price_chk IN
+						<foreach item="item" collection="list" open="("
+							separator="," close=")">
+							#{item}
+						</foreach>
+					</if>
+				</if>
+				<if
+					test="!list.contains('강북구') and !list.contains('강서구') and !list.contains('강남구') and !list.contains('강동구')">
+					<if
+						test="list.contains('운동') or list.contains('요리') or list.contains('전시회')  or list.contains('뮤지컬') or list.contains('여행') or list.contains('홈트') or list.contains('OTT') or list.contains('게임')">
+						play_group IN
+						<foreach item="item" collection="list" open="("
+							separator="," close=")">
+							#{item}
+						</foreach>
+					</if>
+					<if test="list.contains('유료') or list.contains('무료')">
+						AND play_price_chk IN
+						<foreach item="item" collection="list" open="("
+							separator="," close=")">
+							#{item}
+						</foreach>
+					</if>
+				</if>
+			</if>
+		</where>
+	</select>
+
+
+
+
+	<!--거리조회 -->
+	<select id="getPlayDistanceSearchList" parameterType="list"
+		resultType="play_infoDto">
+		SELECT * FROM play_information where travel_distance
+		BETWEEN #{distances[0]} AND #{distances[1]}
+	</select>
+
+
+
+
+
+	<select id="PlayList_group" resultType="play_infoDto"
+		parameterType="java.util.Map">
+		select * from
+		play_information
+		where play_group in
+		<foreach item="item" collection="list" open="(" separator=","
+			close=")">
+			#{item}
+		</foreach>
+	</select>
+
+
+	<!-- 가격별 조회 -->
+	<select id="PriceSearch" resultType="play_infoDto">
+		select * from
+		play_information where;
+	</select>
+
+
+	<!-- Random 관련 -->
+	<select id="RandomPlay" resultType="play_infoDto">
+		SELECT * FROM
+		play_information ORDER BY RAND() LIMIT 3;
+	</select>
+	<select id="RandomPlayOutside" resultType="play_infoDto">
+		SELECT * FROM
+		play_information WHERE play_result LIKE 'T%' ORDER BY RAND() LIMIT
+		3;
+	</select>
+
+	<select id="RandomPlayInside" resultType="play_infoDto">
+		SELECT * FROM
+		play_information WHERE play_result LIKE 'F%' ORDER BY RAND() LIMIT
+		3;
+	</select>
+
+	<select id="check" resultType="int">
+		select count(*) from play_like
+		where play_it = #{play_it} and member_id =
+		#{member_id}
+	</select>
+	<!-- 좋아요 활성화 -->
+	<insert id="likeinsert" parameterType="play_likeDto">
+		<selectKey keyProperty="play_like_index" resultType="int"
+			order="BEFORE">
+			SELECT COALESCE(MAX(play_like_index),0) FROM play_like
+		</selectKey>
+		INSERT INTO play_like
+		VALUES(#{play_like_index}+1,#{play_it},#{member_id},now())
+	</insert>
+	<!-- 좋아요 시퀀스 -->
+	<update id="index_seq" parameterType="play_likeDto">
+		update play_like
+		set
+		play_like_index = play_like_index - 1
+		where play_like_index >
+		#{play_like_index}
+	</update>
+	<!--좋아요 삭제 -->
+	<delete id="likedelete" parameterType="play_likeDto">
+		delete from play_like
+		where play_like_index = #{play_like_index}
+	</delete>
+
+	<update id="countplus" parameterType="int">
+		update play_information set
+		play_like = play_like + 1 where play_index = #{play_it}
+	</update>
+
+	<update id="countmin" parameterType="int">
+		UPDATE play_information SET
+		play_like = CASE
+		WHEN play_like > 0 THEN play_like - 1
+		ELSE 0
+		END
+		WHERE
+		play_index = #{play_it};
+	</update>
+
+	<select id="likecount" resultType="int">
+		select play_like from
+		play_information where play_index = #{play_it}
+	</select>
+	<select id="likelist" parameterType="string" resultType="int">
+		select
+		play_it from play_like where member_id = #{id}
+	</select>
+	<select id="cnt" resultType="int">
+		select count(*) from
+		play_information;
+	</select>
+
+	<!--검색갯수 -->
+	<select id="searchPlay" resultType="int">
+		SELECT count(*),
+		play_group,play_name,play_address,play_detail_address,play_price_standard
+		FROM play_information
+		WHERE play_group LIKE
+		concat('%',#{keyword},'%')
+		or play_name LIKE concat('%',#{keyword},'%')
+		or play_address LIKE
+		concat('%',#{keyword},'%')
+		or play_detail_address
+		LIKE
+		concat('%',#{keyword},'%')
+		or play_price_standard LIKE
+		concat('%',#{keyword},'%')
+	</select>
+	<!--검색 리스트 -->
+	<select id="searchplaylist" resultType="play_infoDto">
+		SELECT *,
+		play_group,play_name,play_address,play_detail_address,play_price_standard
+		FROM play_information
+		WHERE play_group LIKE
+		concat('%',#{keyword},'%')
+		or play_name LIKE concat('%',#{keyword},'%')
+		or play_address LIKE
+		concat('%',#{keyword},'%')
+		or play_detail_address
+		LIKE
+		concat('%',#{keyword},'%')
+		or play_price_standard LIKE
+		concat('%',#{keyword},'%')
+	</select>
+
+	<!--조회수 증가 -->
+	<update id="read" parameterType="int">
+		update play_information set
+		play_view = play_view + 1 where play_index = #{playIndex}
+	</update>
+
+	<select id="PlayCont" parameterType="int"
+		resultType="play_infoDto">
+		select * from play_information where play_index =
+		#{playIndex}
+	</select>
+
+	<select id="view" parameterType="int" resultType="play_infoDto">
+		select
+		play_view from play_information where play_index = #{playIndex}
+	</select>
+
+	<!--플레이 별점 기능 -->
+	<select id="replayall" parameterType="int"
+		resultType="play_commentDto">
+		select * from play_comment where play_index = #{idx}
+	</select>
+
+	<insert id="reply_insert" parameterType="play_commentDto">
+		<selectKey resultType="int" keyProperty="play_comment_num"
+			order="BEFORE">
+			SELECT COALESCE(MAX(play_comment_num),0) FROM play_comment
+		</selectKey>
+		insert into play_comment values(#{play_comment_num}
+		+1,#{play_index},#{member_nickname},
+		#{member_id},#{play_comment},#{play_star},now(),null)
+	</insert>
+
+	<!--info 댓글 +1,별점 추가 -->
+	<update id="updateinfo" parameterType="map">
+		update play_information
+		set play_replytotal = play_replytotal + 1,
+		play_startotal = play_startotal + #{star}
+		where play_index = #{play_index}
+	</update>
+
+	<!--댓글 총 갯수 -->
+	<select id="reply_count" parameterType="int" resultType="int">
+		select
+		count(*) from play_comment where play_index = #{playIndex}
+	</select>
+
+	<!--댓글 수정 -->
+	<update id="reply_modify" parameterType="play_commentDto">
+		update play_comment
+		set member_nickname = #{member_nickname},
+		play_comment = #{play_comment},
+		play_update = #{play_update}
+		WHERE play_comment_num = #{play_comment_num}
+	</update>
+	<!--댓글 삭제 -->
+	<delete id="reply_delete" parameterType="int">
+		delete from play_comment where play_comment_num = #{index}
+	</delete>
+	<!--댓글 시퀂스 -->
+	<update id="reply_seq" parameterType="int">
+		<![CDATA[
+			update play_comment set play_comment_num = play_comment_num -1
+				where play_comment_num > #{index}
+		]]>
+	</update>
+
+	<select id="star_count" resultType="int">
+		SELECT COALESCE(SUM(play_star), 0) AS total_star
+		FROM play_comment
+		WHERE play_index = #{idx}
+	</select>
+
+	<update id="star" parameterType="int">
+	 <![CDATA[
+		  UPDATE play_information
+		  SET play_rating = play_startotal / play_replytotal
+		  WHERE play_index = #{play_index}
+		  ]]>
+	</update>
+
+	<select id="star_num" resultType="int">
+		select play_star from play_comment where play_comment_num = #{index};
+	</select>	
+	<select id="play_index_num" resultType="int">
+		select play_index from play_comment where play_comment_num = #{index};
+	</select>	
+	
+	<update id="deleteinfo" parameterType="map">
+		update play_information
+		set play_replytotal = play_replytotal - 1,
+		play_startotal = play_startotal - #{star}
+		where play_index = #{play_index}
+	</update>
+	
+	<select id="outSideall" resultType="play_infoDto">
+		SELECT *
+		FROM play_information
+		WHERE play_group IN ('운동', '여행', '축제','전시회','뮤지컬') AND play_replytotal >= 3
+		ORDER BY play_rating DESC, play_replytotal DESC
+		LIMIT 4
+	</select>
+	
+	<select id="inSideall" resultType="play_infoDto">
+	SELECT *
+	FROM play_information
+	WHERE play_group IN ('OTT', '홈트', '요리', '게임') AND play_replytotal >= 3
+	ORDER BY play_rating DESC, play_replytotal DESC
+	LIMIT 4
+	</select>
+	
+</mapper>

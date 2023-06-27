@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//src/main/webapp/WEB-INF/views/include/footer.jsp=UTF-8
+=======
+encoding//src/main/webapp/WEB-INF/mapping.properties=UTF-8
+>>>>>>> a2a30a7d2f6795d195959c73448a114456153c52

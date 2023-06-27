@@ -1,0 +1,45 @@
+#plz-login {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 0px solid black;
+	height: 180px;
+	width: 320px;
+	background-color: white;
+	border-radius: 15px;
+	display: none;
+}
+
+.button-container button {
+	background: none;
+	border: none;
+	color: black;
+	font-size: 20px;
+	margin-left: 10px;
+	position: relative;
+	top: -25px;
+}
+
+.button-container a  {
+	background: none;
+	border: none;
+	color: black;
+	text-decoration: none;
+	font-size: 20px;
+	color: red;
+	position: relative;
+	top: -25px;
+}
+
+
+.modal-text {
+	margin-top : 30px;
+	color: gray;
+}
+
+
+
+
+
+

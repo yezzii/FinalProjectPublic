@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.text-gallery {
+	margin-top: 100px;
+}
+
+.play_img {
+	width: 150px;
+	height: 150px !important;
+}
+
+.title {
+	font-size: 30px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.RankList {
+	width: 60%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.RankList th {
+	background-color: #f2f2f2;
+	padding: 10px;
+	text-align: center;
+	font-weight: bold;
+	border-bottom: 1px solid #ddd;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.RankList td {
+	padding: 10px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+
+.RankList tr:last-child td {
+	border-bottom: none;
+}
+
+.RankList tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.RankList tr:hover {
+	background-color: #e2e2e2;
+}

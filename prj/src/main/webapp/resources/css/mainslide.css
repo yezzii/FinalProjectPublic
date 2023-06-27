@@ -1,0 +1,266 @@
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap')
+	;
+
+.container1 {
+	width: 340px;
+	transform: translate(+360px, +80px);
+	margin-top: 150px;
+	text-align: center;
+	margin-right: 140px;
+}
+
+.title {
+	font-size: 60px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 900;
+}
+
+.container1 #modal-open {
+	font-size: 22px;
+	background-color: #a9c8ff;
+	width: 200px;
+	height: 45px;
+	border-radius: 30px;
+	border-style: none;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	cursor :url('./pointcur.png')10 0,auto ;
+}
+
+.container1 #modal-open:hover {
+	background-color: #fff;
+	transition: background-color 0.7s ease;
+}
+
+.container1 .matching2 {
+	font-size: 22px;
+	background-color: #a9c8ff;
+	width: 200px;
+	height: 45px;
+	border-radius: 30px;
+	border-style: none;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+}
+
+.container1 .matching2:hover {
+	background-color: #fff;
+	transition: background-color 0.7s ease;
+}
+
+.main_wrap {
+	padding-top: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.container2 {
+	width: 600px;
+	height: 400px;
+	margin: 0 auto;
+	position: absolute;
+	transform: translate(-370px, +60px);
+}
+
+.slideimg {
+	width: 600px;
+	height: 400px;
+}
+
+/* 보여줄 구간의 높이와 넓이 설정 */
+#slideShow {
+	/*전체 컨테이너*/
+	width: 600px;
+	height: 400px;
+	position: relative;
+	margin: 50px 0px;
+	overflow: hidden;
+	margin-top: 120px;
+	/*리스트 형식으로 이미지를 일렬로 정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은 hidden으로 숨겨줘야됨*/
+}
+
+.slides {
+	/*이미지들이 담겨있는 슬라이드 컨테이너*/
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: calc(600px + 0px)* 6; /* 슬라이드할 사진과 마진 총 넓이 */
+	transition: 0.5s;
+	/* white-space: nowrap; */
+}
+
+/* 첫 번째 슬라이드 가운데에 정렬하기위해 첫번째 슬라이드만 margin-left조정 */
+/* 슬라이드 길이 맞추려면 여기서 마진값이랑 .js 코드에서 마진값 맞춰야함 */
+.slides li:first-child {
+	margin-left: 0px;
+} /* 슬라이드들 옆으로 정렬 */
+.slides li:not(:last-child) {
+	float: left;
+	margin-right: 0px;
+}
+
+.controller span {
+	position: absolute;
+	background-color: transparent;
+	color: black;
+	text-align: center;
+	border-radius: 50%;
+	padding: 10px 20px;
+	top: 50%;
+	font-size: 1.3em;
+	cursor: pointer;
+} /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+.controller span:hover {
+	background-color: rgba(128, 128, 128, 0.11);
+}
+
+.prev {
+	left: 10px;
+} /* 이전 화살표에 마우스 커서가 올라가 있을때 이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+.prev:hover {
+	transform: translateX(-10px);
+}
+
+.next {
+	right: 10px;
+} /* 다음 화살표에 마우스 커서가 올라가 있을때 이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+.next:hover {
+	transform: translateX(10px);
+}
+
+.text1 {
+	font-family: 'S-CoreDream-3Light';
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 1.5;
+}
+
+.arrow-icon {
+	tranmoresform: rotate(45deg);
+	color: #000000;
+	width: 20px;
+}
+
+.best_content {
+	display: inline-block;
+	transform: translate(+90px, +350px);
+	margin-bottom: 400px;
+}
+
+.best_font {
+	font-family: 'S-CoreDream-3Light';
+	font-weight: 900;
+	font-size: 17px;
+	margin-left: 30px;
+	
+}
+/* best */
+.play_pic {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.play-link {
+	display: block;
+	position: relative;
+	width: 300px; /* 이미지의 너비 설정 */
+	height: 200px; /* 이미지의 높이 설정 */
+	overflow: hidden;
+}
+
+.play_img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+	cursor :url('./pointcur.png')10 0,auto ;
+}
+
+.play-link:hover .play_img {
+	transform: scale(1.1); /* 원하는 확대 비율로 조정 가능 */
+}
+
+.play_name {
+	font-family: 'S-CoreDream-3Light';
+	font-size: 15px;
+	width: 140px;
+	display: inline-block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	/* color:#7192ce; */
+	font-weight: 700;
+	color:#6194ed;
+	cursor :url('./pointcur.png')10 0,auto ;
+}
+
+.like_heart {
+	width: 17px;
+	position: relative;
+	top: -2px;
+	cursor: pointer;
+	cursor :url('./pointcur.png')10 0,auto ;
+}
+
+.play_star {
+	position: relative;
+	font-size: 1.0em;
+	top: -5px;
+}
+
+.play_view {
+	height: 14px;
+	position: relative;
+	top: -3px;
+}
+
+.play_viewfont, .play_likefont, .play_starfont {
+	position: relative; font-family : 'S-CoreDream-3Light';
+	font-size: 13px;
+	font-family: 'S-CoreDream-3Light'; font-size : 13px;
+	top: -5px;
+}
+
+.list_wrap{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.play_list{
+	margin-left: 30px;
+}
+
+.mainAdWrap {
+	display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 30px 0;
+    margin-bottom: 150px;
+}
+
+#randomImage {
+	width: 1275px;
+}
+
+.more_font{
+	font-family: 'S-CoreDream-3Light';
+	font-weight: 900;
+	font-size: 17px;
+	margin-left: 30px;
+	text-decoration: none;
+	color:#6194ed;
+	float: right;
+	cursor :url('./pointcur.png')10 0,auto ;
+}

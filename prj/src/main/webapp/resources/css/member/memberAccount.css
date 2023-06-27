@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+form {
+	margin-top: 20px;
+}
+
+table {
+	margin-top: 10px;
+}
+
+table td {
+	padding: 5px;
+}
+
+input[name="id"], input[name="name"], input[type="email"], input[name="nick_name"], input[type="password"] {
+	margin-bottom: 10px;
+	padding: 5px;
+	width: 250px;
+}
+
+input[type="submit"], button {
+	padding: 10px 20px;
+	background-color: #226456;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	width: 263.64px;
+}
+
+input[type="submit"]:hover {
+	background-color: #1a473e;
+}
+
+input:focus {
+	outline: none;
+}
+
+.btn-primary {
+	background-color: transparent;
+	font-weight: bold;
+	color: #226456;
+	border: none;
+	cursor: pointer;
+}
+
+.mail-check-box {
+	margin-top: 5px;
+}
+
+.mail-check-input {
+	width: 260.64px !important;
+	height: 28.18px !important;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 65%;
+	left: 48.5%;
+}
+
+#mail-check-warn {
+	margin-top: 5px;
+}
+
+.error-message {
+	margin-top: 5px;
+}
+
+a {
+	text-decoration: none;
+	color: #226456;
+	margin-right: 10px;
+}
+
+#qna-link {
+	font-weight: bold;
+	color: #226456;
+}
+
+#signup-link {
+	font-weight: bold;
+	color: #226456;
+}
+
+.find-id-con, .find-pwd-con {
+	padding-top: 180px;
+}
+
+.id-con {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 40%;
+	left: 48.5%;
+}
+
+.name-con {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 45%;
+	left: 48.5%;
+}
+
+.email-con {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 48.5%;
+}
+
+.mail-check-box-con {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 55%;
+	left: 50%;
+}
+
+#checkEmail {
+	width: 600px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 40%;
+	left: 425px;
+}
+
+#mail-check-warn {
+	width: 600px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 45%;
+	left: 238px;
+}
+
+#mail-Check-Btn {
+	position: absolute;
+	top: 55px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#signup-btn {
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.footer {
+	margin-top: 500px !important;
+}

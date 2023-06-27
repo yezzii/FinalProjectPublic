@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.progress_container {
+	height: 20px; /* 프로그레스바 전체 높이 */
+	width: 60%; /* 프로그레스바 전체 넓이 */
+	border: 2px solid #FFD8D8; /* 프로그레스바 경계선 */
+	border-radius: 10px;
+}

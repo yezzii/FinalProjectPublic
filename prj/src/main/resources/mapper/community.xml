@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="communityDao">
+
+	<select id="community_cnt" resultType="int">
+		select count(*) from community
+	</select>
+	
+	<select id="community_list" parameterType="pageDto" resultType="communityDto">
+		<![CDATA[select * from (select c.*, row_number() over(order by community_notice desc, community_num desc) rnum from community c) a
+					where rnum >= #{startNo} and rnum <= #{endNo}]]> 
+	</select>
+
+	<insert id="community_memberAdd" parameterType="communityDto">
+		<selectKey resultType="int" keyProperty="community_num" order="BEFORE">
+			select ifnull(max(community_num), 0) from community
+		</selectKey>
+			insert into community 
+			values(#{community_num} + 1,#{community_head}, #{community_title}, #{community_writer}, #{community_content}, #{community_file}, now(), default, default, default, default, #{community_notice}, default)
+	</insert>
+	
+	<insert id="community_managerAdd" parameterType="communityDto">
+		<selectKey resultType="int" keyProperty="community_num" order="BEFORE">
+			select ifnull(max(community_num), 0) from community
+		</selectKey>
+			insert into community 
+			values(#{community_num} + 1,#{community_head}, #{community_title}, default, #{community_content}, #{community_file}, now(), default, default, default, default, #{community_notice}, #{community_manager})
+	</insert>
+	
+	<update id="community_read" parameterType="int">
+		update community 
+		set community_hit = community_hit + 1 
+		where community_num = #{no}
+	</update>
+	
+	<select id="community_cont" parameterType="int" resultType="communityDto">
+		select * from community 
+		where community_num = #{no}
+	</select>
+	
+	<update id="community_modify" parameterType="communityDto">
+		update community 
+		set community_title = #{community_title}, community_content = #{community_content}, community_update = now(), community_file = #{community_file}
+		where community_num = #{community_num}
+	</update>
+	
+	<delete id="community_del" parameterType="int">
+		delete from community 
+		where community_num = #{no}
+	</delete>
+	
+	<update id="community_seq" parameterType="int">
+		update community 
+		set community_num = community_num - 1 
+		where community_num > #{no}
+	</update>
+	
+	<select id="community_searchCnt" parameterType="map" resultType="int">
+		select count(*) from community where 
+		<if test="head == 'all'"></if>
+		<if test="head == 'free'">
+			community_head = '자유' and 
+		</if>
+		<if test="head == 'review'">
+			community_head = '후기' and 
+		</if>
+		<if test="head == 'notice'">
+			community_head = '공지' and 
+		</if>
+		<if test="field == 'all'">
+			(community_title like concat('%',#{keyword},'%') or 
+			community_content like concat('%',#{keyword},'%') or 
+			community_writer like concat('%',#{keyword},'%'))
+		</if>
+		<if test="field == 'title'">
+			community_title like concat('%',#{keyword},'%') 
+		</if>
+		<if test="field == 'cont'">
+			community_content like concat('%',#{keyword},'%') 
+		</if>
+		<if test="field == 'writer'">
+			community_writer like concat('%',#{keyword},'%') 
+		</if>
+	</select>
+	
+	<select id="community_searchList" parameterType="pageDto" resultType="communityDto">
+		select * from (select b.*, row_number() over(order by community_num desc) rnum 
+					   from community b where 
+		<if test="head == 'all'"></if>
+		<if test="head == 'free'">
+			community_head = '자유' and 
+		</if>
+		<if test="head == 'review'">
+			community_head = '후기' and 
+		</if>
+		<if test="head == 'notice'">
+			community_head = '공지' and 
+		</if>
+		<choose>
+			<when test="field == 'all'">
+				(community_title like concat('%',#{keyword},'%') or 
+				community_content like concat('%',#{keyword},'%') or 
+				community_writer like concat('%',#{keyword},'%'))) c 
+			</when>
+			<when test="field == 'title'">
+				community_title like concat('%',#{keyword},'%')) c 
+			</when>
+			<when test="field == 'cont'">
+				community_content like concat('%',#{keyword},'%')) c 
+			</when>
+			<when test="field == 'writer'">
+				community_writer like concat('%',#{keyword},'%')) c 
+			</when>
+		</choose>
+		<![CDATA[where rnum >= #{startNo} and rnum <= #{endNo}]]>
+	</select>
+	
+	<select id="community_likeCount" parameterType="int" resultType="int">
+	 	select count(*) from community_like 
+	 	where community_like_num = #{community_num}
+	</select>
+	
+	<select id="community_getId" parameterType="String" resultType="String">
+		select id from member 
+		where nick_name = #{community_writer}
+	</select>
+	
+	<select id="community_likeCheck" parameterType="map" resultType="int">
+		select count(*) from community_like 
+		where community_like_num = #{community_num} and community_like_id = #{member_nick_name}
+	</select>
+	
+	<update id="community_likeSeq" parameterType="int">
+		update community_like 
+		set community_like_index = community_like_index - 1 
+		where community_like_index > #{no}
+	</update>
+	
+	<update id="community_likeUpdate" parameterType="int">
+		update community_like 
+		set community_like = community_like - 1 
+		where community_like_num = #{no}
+	</update>
+	
+	<update id="community_likeDelete" parameterType="int">
+		update community 
+		set community_like = community_like - 1 
+		where community_num = #{no}
+	</update>
+	
+	<delete id="community_likeDeleteRow" parameterType="map">
+		delete from community_like 
+		where community_like_num = #{community_num} and community_like_id = #{member_nick_name}
+	</delete>
+	
+	<update id="community_likeInsert" parameterType="map">
+		update community 
+		set community_like = ifnull(#{community_like}, 0) + 1 
+		where community_num = #{community_num}
+	</update>
+	
+	<insert id="community_likeInsertRow" parameterType="map">
+		<selectKey resultType="int" keyProperty="community_like_index" order="BEFORE">
+			select ifnull(max(community_like_index), 0) 
+			from community_like
+		</selectKey>
+		insert into community_like 
+		values (#{community_like_index} + 1, #{community_num}, #{member_nick_name}, now())
+	</insert>
+	
+	<update id="community_pointInsert" parameterType="String">
+		update member 
+		set point = point + 2
+		where id = #{id}
+	</update>
+	
+	<update id="community_pointDelete" parameterType="String">
+		update member 
+		set point = point - 5
+		where id = #{id}
+	</update>
+	
+	<select id="community_writerListCount" parameterType="String" resultType="int">
+		select count(*) from community 
+		where community_writer = #{writer_nick}
+	</select>
+	
+	<select id="community_writerList" parameterType="String" resultType="communityDto">
+		select * from community 
+		where community_writer = #{writer_nick}
+	</select>
+	
+	<select id="community_replyList" parameterType="int" resultType="community_replyDto">
+		select * from community_reply
+		where reply_community_num = #{no}
+		order by reply_group asc, reply_num asc
+	</select>
+	
+	<select id="community_replyCont" parameterType="int" resultType="community_replyDto">
+		select * from community_reply
+		where reply_num = #{no }
+	</select>
+	
+	<insert id="community_replyMemberInsert" parameterType="community_replyDto">
+		<selectKey resultType="int" keyProperty="reply_num" order="BEFORE">
+			select ifnull(max(reply_num), 0) from community_reply
+		</selectKey>
+		insert into community_reply 
+		values (#{reply_num} + 1, #{reply_content}, #{reply_community_num}, #{reply_writer}, now() , 
+				default, #{reply_depth}, #{reply_group}, default)
+	</insert>
+	
+	<insert id="community_replyManagerInsert" parameterType="community_replyDto">
+		<selectKey resultType="int" keyProperty="reply_num" order="BEFORE">
+			select ifnull(max(reply_num), 0) from community_reply
+		</selectKey>
+		insert into community_reply 
+		values (#{reply_num} + 1, #{reply_content}, #{reply_community_num}, default, now() , 
+				default, #{reply_depth}, #{reply_group}, #{reply_manager})
+	</insert>
+	
+	<update id="community_replyCountUpdate" parameterType="int">
+		update community 
+		set community_reply = (select count(*) from community_reply where reply_community_num = #{no})
+		where community_num = #{no}
+	</update>
+	
+	<update id="community_replyModify" parameterType="communityDto">
+		update community_reply
+		set reply_content = #{reply_content}, reply_update = now() 
+		where reply_num = #{reply_num}
+	</update>
+	
+	<select id="community_replyGroupCount" parameterType="int" resultType="int">
+		select count(*) from community_reply 
+		where reply_group = #{no}
+	</select>
+	
+	<delete id="community_replyDeleteMent" parameterType="int">
+		update community_reply
+		set reply_content = '삭제된 댓글입니다.'
+		where reply_num = #{no}
+	</delete>
+	
+	<delete id="community_replyDeleteAll" parameterType="int">
+		delete from community_reply 
+		where reply_num = #{no}
+	</delete>
+	
+	<select id="community_maxNum" resultType="int">
+		select ifnull(max(reply_num), 0) 
+		from community_reply
+	</select>
+	
+	<select id="community_likedMember" parameterType="int" resultType="community_likeDto">
+		select * from community_like
+		where community_like_num = #{no}
+	</select>
+	
+	<update id="community_replySeq" parameterType="int">
+		update community_reply 
+		set reply_num = reply_num - 1, reply_group = reply_group - 1
+		where reply_num > #{no} and reply_depth = 0
+	</update>
+	
+	<select id="community_replyGroupCheck" parameterType="int" resultType="int">
+		select count(*) from community_reply 
+		where reply_group = #{no} and reply_num = reply_group
+	</select>
+	
+	<select id="community_bestList" resultType="communityDto">
+		select * from community 
+		order by community_like desc, community_regdate desc;
+	</select>
+	
+</mapper>

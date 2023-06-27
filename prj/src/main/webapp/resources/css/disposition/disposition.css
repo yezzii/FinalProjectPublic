@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.container1 {
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	/* (좌우 , 상하) */
+	transform: translate(-50%, -10%);
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.title {
+	font-size: 50px;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #5D5D5D;
+}
+
+.container2 {
+	border-radius: 10px;
+	background-color: #f2f0ec;
+	width: 500px;
+	height: 600px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -30%);
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.text {
+	color: #5D5D5D;
+	font-size: 20px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.question {
+	color: #5D5D5D;
+}
+
+.A {
+	display: fixed;
+	text-align: center;
+	width: 90%;
+	height: 50px;
+	border: none;
+	cursor: pointer;
+	color: black;
+	font-size: 18px;
+	border-radius: 20px;
+	background-color: #D9E5FF;
+	font-family: 'S-CoreDream-3Light';
+	font-weight: 700;
+}

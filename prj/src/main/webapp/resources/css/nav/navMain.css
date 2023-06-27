@@ -1,0 +1,90 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap')
+	;
+
+
+body{
+	background-color: #f2f0ec;
+}
+
+.logo {
+	position: fixed;
+	display: inline-block;
+	width: 200px;
+	height: 92px;
+	margin-top: 10px;
+	margin-left: 30px;
+	cursor: url('./pointcur.png') 10 0, auto;
+}
+
+.box-wrap {
+	margin-top: -15px;
+}
+
+.box-box {
+	width: 40px;
+	height: 900px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 20px;
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+	margin-top: 200px;
+	padding-top: 20px;
+	padding-right: 2.5px;
+}
+
+.box1 {
+	background-color: #226456;
+	position: absolute;
+	right: 0;
+	transition: right 1s ease-in-out;
+	cursor: url('./pointcur.png') 10 0, auto;
+}
+
+.box6 {
+	background-color: #226456;
+	position: absolute;
+	right: 0;
+	transition: right 1s ease-in-out;
+}
+
+.box2 {
+	background-color: #a39ef8;
+	position: absolute;
+	right: 40px;
+	transition: right 1s ease-in-out;
+}
+
+.box3 {
+	background-color: #e6fffd;
+	position: absolute;
+	right: 80px;
+	transition: right 1s ease-in-out;
+}
+
+.box4 {
+	background-color: #a9c8ff;
+	position: absolute;
+	right: 120px;
+	transition: right 1s ease-in-out;
+}
+
+.box5 {
+	background-color: #cba6c3;
+	position: absolute;
+	right: 160px;
+	transition: right 1s ease-in-out;
+}
+
+nav ul {
+	margin-top: 10px;
+	margin-left: 140px;
+}
+
+nav ul li a {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 20px;
+}
+

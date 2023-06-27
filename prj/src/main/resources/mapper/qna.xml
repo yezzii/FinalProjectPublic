@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="QnaDao">
+
+	<select id="faq_category_name" resultType="faq_categoryDto">
+		select * from faq_category
+	</select>
+	
+	<select id="faq_content" resultType="faqDto">
+		select * from faq
+	</select>
+	
+	<insert id="qna_insert" parameterType="qnaDto">
+		<selectKey resultType="int" keyProperty="qna_num" order="BEFORE">
+			select ifnull(max(qna_num), 0) from qna_board
+		</selectKey>
+			insert into qna_board 
+			values(#{qna_num} + 1,#{qna_head}, #{qna_title}, #{qna_writer}, #{qna_password}, #{qna_content}, 
+					#{qna_file}, now(), default, #{qna_groupNo}, default, default, default)
+	</insert>
+	
+	<select id="qna_count" resultType="int">
+		select count(*) from qna_board
+	</select>
+	
+	<select id="qna_list" parameterType="pageDto" resultType="qnaDto">
+		select * 
+		from ( select c.*, row_number() over(order by qna_groupNo desc, qna_groupOrd asc) rnum from qna_board c) a
+		where rnum between #{startNo} and #{endNo}
+	</select>
+
+	<select id="qna_content" parameterType="int" resultType="qnaDto">
+		select * from qna_board 
+		where qna_num = #{no}
+	</select>
+	
+	<update id="qna_update" parameterType="qnaDto">
+		update qna_board 
+		set qna_title = #{qna_title}, qna_content = #{qna_content}, qna_update = now() 
+		where qna_num = #{qna_num}
+	</update>
+	
+	<delete id="qna_delete" parameterType="int">
+		delete from qna_board
+		where qna_num = #{no}
+	</delete>
+	
+	<update id="qna_updateSeq" parameterType="int">
+		update qna_board 
+		set qna_num = qna_num - 1, qna_groupNo = qna_groupNo - 1
+		where qna_num > #{no}
+	</update>
+	
+	<select id="qna_searchCount" parameterType="map" resultType="int">
+		select count(*) from qna_board where 
+		<if test="head == '선택안함'"></if>
+		<if test="head == '회원 가입 및 계정 관리'">
+			qna_head = '회원 가입 및 계정 관리' and 
+		</if>
+		<if test="head == '사용자 신고'">
+			qna_head = '사용자 신고' and 
+		</if>
+		<if test="head == '포인트 관련'">
+			qna_head = '포인트 관련' and 
+		</if>
+		<if test="head == '사이트 사용법'">
+			qna_head = '사이트 사용법' and 
+		</if>
+		<if test="head == '커뮤니티'">
+			qna_head = '커뮤니티' and 
+		</if>
+		<if test="head == '기타'">
+			qna_head = '기타' and 
+		</if>
+		<if test="field == 'all'">
+			(qna_title like concat('%',#{keyword},'%') or 
+			qna_content like concat('%',#{keyword},'%') or 
+			qna_writer like concat('%',#{keyword},'%'))
+		</if>
+		<if test="field == 'title'">
+			qna_title like concat('%',#{keyword},'%') 
+		</if>
+		<if test="field == 'cont'">
+			qna_content like concat('%',#{keyword},'%') 
+		</if>
+		<if test="field == 'writer'">
+			qna_writer like concat('%',#{keyword},'%') 
+		</if>
+	</select>
+
+	<select id="qna_searchList" parameterType="pageDto" resultType="qnaDto">
+		select * from (select b.*, row_number() over(order by qna_groupNo desc, qna_groupOrd asc) rnum 
+					   from qna_board b where 
+		<if test="head == '선택안함'"></if>
+		<if test="head == '회원 가입 및 계정 관리'">
+			qna_head = '회원 가입 및 계정 관리' and 
+		</if>
+		<if test="head == '사용자 신고'">
+			qna_head = '사용자 신고' and 
+		</if>
+		<if test="head == '포인트 관련'">
+			qna_head = '포인트 관련' and 
+		</if>
+		<if test="head == '사이트 사용법'">
+			qna_head = '사이트 사용법' and 
+		</if>
+		<if test="head == '커뮤니티'">
+			qna_head = '커뮤니티' and 
+		</if>
+		<if test="head == '기타'">
+			qna_head = '기타' and 
+		</if>
+		<choose>
+			<when test="field == 'all'">
+				(qna_title like concat('%',#{keyword},'%') or 
+				qna_content like concat('%',#{keyword},'%') or 
+				qna_writer like concat('%',#{keyword},'%'))) c 
+			</when>
+			<when test="field == 'title'">
+				qna_title like concat('%',#{keyword},'%')) c 
+			</when>
+			<when test="field == 'cont'">
+				qna_content like concat('%',#{keyword},'%')) c 
+			</when>
+			<when test="field == 'writer'">
+				qna_writer like concat('%',#{keyword},'%')) c 
+			</when>
+		</choose>
+		<![CDATA[where rnum >= #{startNo} and rnum <= #{endNo}]]>
+	</select>
+	
+	<select id="qna_maxNum" resultType="int">
+		select ifnull(max(qna_num), 0) from qna_board
+	</select>
+	
+	<insert id="qna_insertReply" parameterType="qnaDto">
+		<selectKey resultType="int" keyProperty="qna_num" order="BEFORE">
+			select ifnull(max(qna_num), 0) from qna_board
+		</selectKey>
+			insert into qna_board 
+			values(#{qna_num} + 1,#{qna_head}, #{qna_title}, #{qna_writer}, #{qna_password}, #{qna_content}, 
+					#{qna_file}, now(), default, #{qna_groupNo}, #{qna_groupOrd}, #{qna_depthNo}, default)
+	</insert>
+	
+	<update id="qna_updateState" parameterType="qnaDto">
+		update qna_board 
+		set qna_state = 1 
+		where qna_num = #{qna_num}
+	</update>
+	
+	<select id="qna_searchUserList" parameterType="String" resultType="memberDto">
+		select nick_name from member
+		where nick_name like concat('%',#{keyword},'%')
+	</select>
+	
+	<select id="qna_categoryList" parameterType="int" resultType="faqJoinDto">
+		select c.faq_category_num, c.faq_category_name, f.faq_title, f.faq_content 
+		from faq_category c join faq f on c.faq_category_num = f.faq_category
+		where f.faq_category = #{no};
+	</select>
+
+</mapper>

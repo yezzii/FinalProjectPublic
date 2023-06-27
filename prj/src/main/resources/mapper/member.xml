@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberDao">
+	
+	<select id="member_insert_checkId" parameterType="String" resultType="int">
+		select count(*) from member where id = #{value}
+	</select>
+	
+	<select id="member_insert_checkNickName" parameterType="String" resultType="int">
+		select count(*) from member where nick_name = #{value}
+	</select>
+	
+	<select id="member_insert_checkEmail" parameterType="String" resultType="int">
+		select count(*) from member where email = #{value}
+	</select>
+	
+	<select id="member_insert_checkPhone" parameterType="String" resultType="int">
+		select count(*) from member where phone = #{value}
+	</select>
+
+	<insert id="member_insert" parameterType="memberDto">
+		insert into member values(#{id}, #{password}, #{name}, #{nick_name}, #{email}, #{phone}, #{post}, #{road_address}, #{jibun_address}, #{detail_address}, #{dong_address}, now(), default, NULL, default)
+	</insert>
+	
+	<insert id="member_kakaoInsert" parameterType="memberDto">
+		insert into member values(#{id}, #{password}, #{name}, #{nick_name}, #{email}, #{phone}, #{post}, #{road_address}, #{jibun_address}, #{detail_address},  #{dong_address}, now(), default, #{kakao_id}, default)
+	</insert>
+	
+	<select id="member_checkId" parameterType="String" resultType="int">
+		select count(*) from member where id = #{value}
+	</select>
+	
+	<select id="member_checkPwd" parameterType="memberDto" resultType="int">
+		select count(*) from member where id = #{id} and password = #{password}
+	</select>
+	
+	<select id="member_checkAccessToken" parameterType="String" resultType="memberDto">
+		select * from member where kakao_id = #{value}
+	</select>
+	
+	<select id = "member_content" parameterType="String" resultType="memberDto">
+		select * from member where id = #{value}
+	</select>
+	
+	<select id="member_community_count" parameterType="String" resultType="int">
+		select count(community_num) from community where community_writer = #{value}
+	</select>
+	
+	<select id="member_community_list" parameterType="map" resultType="communityDto">
+		<![CDATA[select * from (select c.*, row_number() over(order by community_num desc) rnum from community c where c.community_writer = #{nickName}) a where rnum >= #{pDto.startNo} and rnum <= #{pDto.endNo}]]>
+	</select>
+
+	<select id="member_reply_count" parameterType="String" resultType="int">
+		select count(*) from community_reply where reply_writer = #{value}
+	</select>
+	
+	<select id="member_reply_list" parameterType="map" resultType="community_replyDto">
+		<![CDATA[select a.*, c.community_title as community_reply_title from (select cr.*, row_number() over(order by cr.reply_num desc) rnum from community_reply cr where reply_writer = #{nickName}) a join community c on a.reply_community_num = c.community_num where rnum >= #{pDto.startNo} and rnum <= #{pDto.endNo}]]>
+	</select>
+	
+	<select id="member_reply_content_count" parameterType="String" resultType="int">
+		select count(distinct reply_community_num) from community_reply where reply_writer = #{value}
+	</select>
+	
+	<select id="member_reply_content_list" parameterType="map" resultType="communityDto">
+		<![CDATA[SELECT *
+FROM (
+  SELECT DISTINCT cr.reply_community_num, 
+         ROW_NUMBER() OVER (ORDER BY cr.reply_community_num DESC) AS rnum
+  FROM (
+    SELECT DISTINCT reply_community_num
+    FROM community_reply
+    WHERE reply_writer = #{nickName}
+  ) AS cr
+) AS a
+JOIN community c ON a.reply_community_num = c.community_num
+WHERE a.rnum >= #{pDto.startNo} and rnum <= #{pDto.endNo}]]>
+	</select>
+
+	<select id="member_like_count" parameterType="String" resultType="int">
+		select count(*) from community_like where community_like_id = #{value}
+	</select>
+	
+	<select id="member_like_list" parameterType="map" resultType="communityDto">
+		<![CDATA[select distinct * from (select c.*, row_number() over(order by c.community_num desc) rnum from community c join community_like cl on c.community_num = cl.community_like_num where cl.community_like_id = #{nickName}) a where rnum >= #{pDto.startNo} and rnum <= #{pDto.endNo}]]>
+	</select>
+	
+	<select id="member_play_like_count" parameterType="String" resultType="int">
+		select count(*) from play_like where member_id = #{value}
+	</select>
+	
+	<select id="member_play_like_list" parameterType="String" resultType="play_infoDto">
+		 select * from play_information where play_index in (select play_it from play_like where member_id = #{value});
+	</select>
+	
+	<select id="member_modify_checkNickName" parameterType="map" resultType="int">
+		select count(*) from member where nick_name != #{nickName} and nick_name = #{newNickName}
+	</select>
+	
+	<select id="member_modify_checkEmail" parameterType="map" resultType="int">
+		select count(*) from member where email != #{email} and email = #{newEmail}
+	</select>
+	
+	<select id="member_modify_checkPhone" parameterType="map" resultType="int">
+		select count(*) from member where phone != #{phone} and phone = #{newPhone}
+	</select>
+	
+	<update id="member_modify" parameterType="memberDto">
+		update member set password = #{password}, name = #{name}, phone = #{phone}, post = #{post}, road_address = #{road_address}, jibun_address = #{jibun_address}, detail_address = #{detail_address}, dong_address = #{dong_address} where id = #{id}
+	</update>
+	
+	<update id="member_modify_nickName" parameterType="map">
+		update member set nick_name = #{nick_name}, point = point - 20 where id = #{id} and point >= 20
+	</update>
+	
+	<update id="member_modify_email" parameterType="map">
+		update member set email = #{email} where id = #{id}
+	</update>
+	
+	<delete id="member_delete" parameterType="String">
+		delete from member where id = #{value}
+	</delete>
+	
+	<select id="member_findId" parameterType="map" resultType="memberDto">
+		select * from member where name = #{name} and email = #{email}
+	</select>
+	
+	<select id="member_findPwd" parameterType="map" resultType="memberDto">
+		select * from member where id = #{id} and email = #{email}
+	</select>
+	
+	<select id="member_community_info_count" parameterType="String" resultType="int">
+		select count(*) from user_community_info_view where user_nickname = #{value}
+	</select>
+	
+	<select id="user_community_info" parameterType="map" resultType="userCommunityInfoView">
+		<![CDATA[select * from (select v.*, row_number() over(order by written_num desc) vnum from user_community_info_view v where user_nickname = #{nickName}) a where vnum >= #{pDto.startNo} and vnum <= #{pDto.endNo}]]>
+	</select>
+	
+	<select id="member_community_reply_info_count" parameterType="String" resultType="int">
+		select count(*) from user_community_reply_info_view where user_nickname = #{value}
+	</select>
+	
+	<select id="user_community_reply_info" parameterType="map" resultType="userCommunityReplyInfoView">
+		<![CDATA[select * from (select v.*, row_number() over(order by written_num desc) vnum from user_community_reply_info_view v where user_nickname = #{nickName}) a where vnum >= #{pDto.startNo} and vnum <= #{pDto.endNo}]]>
+	</select>
+	
+</mapper>
