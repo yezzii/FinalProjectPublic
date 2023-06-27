@@ -1,19 +1,22 @@
 # KH Final Project | TODO
 <div align="center">
-  <br><br><br><br><img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/cb4b2ba0-411c-4387-98e0-08839f045584" alt="" height="100px" /><br><br><br><br>
+  <br><br><br><br><img src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/0daaece9-797c-4c0d-8ed0-76590d5a14bd" alt="" height="100px" /><br><br><br><br>
 </div>
 
 ## 🤸 About Team
 <table>
   <tbody>
     <tr>
-      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/3e759273-a1ce-401f-bb0c-e34619e3ebbf"width="100px;" 
-       alt=""/>
+      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/3e759273-a1ce-401f-bb0c-e34619e3ebbf"width="100px;" alt=""/>
         <br /><sub><b>팀장 : 고강찬</b></sub><br /></th>
-      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/b66b3b3c-280e-4ccd-9081-ea1486be7943" width="100px;" alt=""/><br /><sub><b>팀원 : 권예지</b></sub><br /></th>
-      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/d8bdace6-fc4b-47c1-8285-9afdb3897b52" width="100px;" alt=""/><br /><sub><b>팀원 : 김서윤</b></sub><br /></th>
-      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/36052549-4ddd-4ef2-b7ee-eb23ce9b838f" width="100px;" alt=""/><br /><sub><b>팀원 : 최정민</b></sub><br /></th>
-      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/61183b03-53f6-49d6-9fee-d45a941caadc" width="100px;" alt=""/><br /><sub><b>팀원 : 홍서화</b></sub><br /></th>
+      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/a74202e5-6e80-4a04-9e5f-28ab35006f60" width="100px;" alt=""/><br />
+        <sub><b>팀원 : 권예지</b></sub><br /></th>
+      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/b4a2af39-f95f-45a4-afe1-cb9aa76b711b" width="100px;" alt=""/><br />
+        <sub><b>팀원 : 김서윤</b></sub><br /></th>
+      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/37d4414d-8f37-4f0d-b693-bb0f2ce06188" width="100px;" alt=""/><br />
+        <sub><b>팀원 : 최정민</b></sub><br /></th>
+      <th align="center" width="200px"><img src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/2b215ccf-bc30-4466-9715-900948143c23" width="100px;" alt=""/><br />
+        <sub><b>팀원 : 홍서화</b></sub><br /></th>
     </tr>
     <tr>
       <th align="center">Random, 프로젝트 총괄</th>
@@ -186,16 +189,49 @@
 <br><br><br>
 
 ## 📂 TODO ERD
-<img src="https://github.com/Sonjulking/FinalPrj/blob/master/etc/todo_erd.png">
+<img src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/17f8e9f0-55d7-4310-8bdb-fa1e4cff094a">
 <br><br><br>
 
 ## 💻 화면 구성
-
+### ▪️ MainPage
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/578860ca-8286-4bfc-a89a-701a067b9501">
+<br><br><br>
+### ▪️ Disposition
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/97208f1e-7ea7-46c4-a14b-7b5f3e6d7173">
+<br>
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/304e7ace-5903-47d7-8994-aadb4e9707a2">
+<br>
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/0713746b-797f-48ff-b0ef-db53bc0fa95a">
+<br><br><br>
+### ▪️ Play_List!
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/77bb9337-6587-46a3-b87a-968affae0636">
+<br><br><br>
+### ▪️ Play_Content!
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/107d1829-2c26-4478-b7e8-e06974a2bd61">
+<br><br><br>
+### ▪️ Random
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/9f9a6ec3-a237-4d7e-9fd9-6ca8c236a84b">
+<br>
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/8139293d-88d4-4145-8880-0e2f5b25b983">
+<br><br><br>
+### ▪️ Community
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/5352e910-f9b8-44ac-bee6-b8b2bedd41fe">
+<br><br><br>
+### ▪️ Q&A
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/9cf93a72-696e-44bb-89e6-3d96dd1e5868">
+<br><br><br>
+### ▪️ MyPage
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/a0fb5e82-7ff4-4537-8a4e-da07f595c1fd">
+<br><br><br>
+### ▪️ Login
+<img width="800" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/014b676c-c186-44d7-b9d9-b9668093d9ab">
 <br><br><br>
 
 ## ✏️ 요구사항 정의서
-<img src="https://github.com/Sonjulking/FinalPrj/assets/121998174/7c5cd369-6ce4-4f5d-8158-870753406cce">
+<img width="850" alt="image" src="https://github.com/Sonjulking/FinalProjectPublic/assets/118273737/f0f7f8aa-7d4a-471a-8e70-d5896b84cfc2">
 <br><br><br>
+
+
 
 ## 🗨️ 프로젝트 소감
 #### 🥷 고강찬
